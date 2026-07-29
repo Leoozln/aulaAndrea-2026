@@ -6,13 +6,13 @@ const controller = require('../controllers/pessoaController');
 
 router.get('/', controller.listar);
 
-// router.get('/:id', controller.buscar);
+router.get('/:id', controller.buscar);
 
-// router.post('/', controller.inserir);
+router.post('/', controller.inserir);
 
-// router.put('/:id', controller.atualizar);
+router.put('/:id', controller.atualizar);
 
-// router.delete('/:id', controller.excluir);
+router.delete('/:id', controller.excluir);
 
 module.exports = router;
 
