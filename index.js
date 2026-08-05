@@ -9,6 +9,9 @@ app.use(express.json());
 const pessoaRoutes = require('./routes/pessoaRoutes');
 app.use('/pessoas', pessoaRoutes);
 
+const cargoRoutes = require('./routes/cargoRoutes');
+app.use('/cargos', cargoRoutes);
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
