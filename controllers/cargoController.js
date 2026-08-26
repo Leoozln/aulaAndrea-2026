@@ -1,3 +1,5 @@
+const Cargo = require('../models/Cargo');
+
 async function listar(req,res){
 
     try{
@@ -18,7 +20,7 @@ async function buscar(req,res){
 
     try{
 
-        const cargo = await Cargos.findByPk(req.params.id);
+        const cargos = await Cargo.findByPk(req.params.id);
 
         res.json(cargos);
 
@@ -34,7 +36,7 @@ async function inserir(req,res){
 
     try{
 
-        const cargos = await Cargos.create({
+        const cargos = await Cargo.create({
 
             car_nome:req.body.car_nome
 
@@ -54,7 +56,7 @@ async function atualizar(req,res){
 
     try{
 
-        const cargos = await Cargos.findByPk(req.params.id);
+        const cargos = await Cargo.findByPk(req.params.id);
 
         await cargos.update({
 
@@ -76,7 +78,7 @@ async function excluir(req,res){
 
     try{
 
-        const cargos = await Cargos.findByPk(req.params.id);
+        const cargos = await Cargo.findByPk(req.params.id);
 
         await cargos.destroy();
 

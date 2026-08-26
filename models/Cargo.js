@@ -3,15 +3,15 @@ const sequelize = require('../config/database');
 
 const Cargo = sequelize.define('Cargo', {
 
-    id: {
+    car_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
 
-    cargo: {
+    car_nome: {
         type: DataTypes.STRING(30),
-        allowNull: false,
+        allowNull: true,
         unique: true
     }
 
