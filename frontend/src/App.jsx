@@ -1,8 +1,16 @@
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Home from "./pages/Home"
+
 function App() {
 
   return (
     <>
-    <h1>Projetooo</h1>
+    <Header />
+
+    <Home />
+    
+    <Footer />
     </>
   )
 }
