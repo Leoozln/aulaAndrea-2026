@@ -1,4 +1,5 @@
 import Botao from "../../components/Botao/Botao";
+import "./Home.css";
 
 function Home(){
         return(
