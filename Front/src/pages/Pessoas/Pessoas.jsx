@@ -29,6 +29,14 @@ function Pessoas() {
         buscarPessoas();
     }
 
+    async function excluirPessoa(id) {
+        await fetch(`${API_URL}/pessoas/${id}`, {
+            method: 'DELETE'
+        });
+
+        buscarPessoas();
+    }
+
     return (
         <div>
             <h2>Pessoas cadastradas</h2>
@@ -44,6 +52,8 @@ function Pessoas() {
             {pessoas.map((pessoa) => (
                 <p key={pessoa.pes_id}>
                     {pessoa.pes_nome}
+                    {' '}
+                    <button onClick={() => excluirPessoa(pessoa.pes_id)}>Excluir</button>
                 </p>
             ))}
         </div>
