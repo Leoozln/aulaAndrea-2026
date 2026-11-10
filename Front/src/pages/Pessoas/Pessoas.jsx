@@ -6,6 +6,7 @@ function Pessoas() {
 
     const [pessoas, setPessoas] = useState([]);
     const [nome, setNome] = useState('');
+    const [idEditando, setIdEditando] = useState(null);
 
     useEffect(() => {
         buscarPessoas();
@@ -29,6 +30,23 @@ function Pessoas() {
         buscarPessoas();
     }
 
+    function editarPessoa(pessoa) {
+        setIdEditando(pessoa.pes_id);
+        setNome(pessoa.pes_nome);
+    }
+
+    async function atualizarPessoa() {
+        await fetch(`${API_URL}/pessoas/${idEditando}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pes_nome: nome })
+        });
+
+        setIdEditando(null);
+        setNome('');
+        buscarPessoas();
+    }
+
     async function excluirPessoa(id) {
         await fetch(`${API_URL}/pessoas/${id}`, {
             method: 'DELETE'
@@ -47,11 +65,15 @@ function Pessoas() {
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
             />
-            <button onClick={cadastrarPessoa}>Cadastrar</button>
+            <button onClick={idEditando ? atualizarPessoa : cadastrarPessoa}>
+                {idEditando ? 'Salvar' : 'Cadastrar'}
+            </button>
 
             {pessoas.map((pessoa) => (
                 <p key={pessoa.pes_id}>
                     {pessoa.pes_nome}
+                    {' '}
+                    <button onClick={() => editarPessoa(pessoa)}>Editar</button>
                     {' '}
                     <button onClick={() => excluirPessoa(pessoa.pes_id)}>Excluir</button>
                 </p>
