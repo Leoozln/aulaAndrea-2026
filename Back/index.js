@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express()
 const port = 3000
 
@@ -9,6 +10,7 @@ const swaggerSpec = require('./swagger');
 app.get('/', (req, res) => { res.send('Olá mundo !'); })
 
 const pool = require('./db');
+app.use(cors());
 app.use(express.json());
 
 const pessoaRoutes = require('./routes/pessoaRoutes');
