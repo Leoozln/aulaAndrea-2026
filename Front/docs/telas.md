@@ -17,9 +17,11 @@ Situações possíveis: **Concluída**, **Em andamento** e **A fazer**.
 - **Falta:** definir o conteúdo final da página e a ação dos botões.
 
 ### Pessoas
-- **Feito:** página criada e acessível pela rota `/pessoas` e pelo link "Pessoas" do menu.
-- **Falta:** listagem e formulário de pessoas integrados com o Back.
+- **Feito:**
+  - Página criada e acessível pela rota `/pessoas` e pelo link "Pessoas" do menu.
+  - Listagem das pessoas cadastradas no banco, buscando os dados em `GET /pessoas` do Back. O endereço do Back vem de `src/services/api.js`.
+- **Falta:** cadastrar, editar e excluir pessoas.
 
 ### Cargos
 - **Feito:** página criada e acessível pela rota `/cargos` e pelo link "Cargos" do menu.
-- **Falta:** listagem e formulário de cargos integrados com o Back.
+- **Falta:** listagem e formulário de cargos integrados com o Back. A API `/cargos` já está pronta no Back.
