@@ -2,7 +2,7 @@ const cargoSwagger = {
     paths: {
 
         // LISTAR CARGOS
-        '/cargo': {
+        '/cargos': {
             get: {
                 tags: ['Cargos'],
                 summary: 'Lista todos os cargos',
@@ -61,7 +61,7 @@ const cargoSwagger = {
         },
 
         // BUSCAR CARGO POR ID
-        '/cargo/{car_id}': {
+        '/cargos/{car_id}': {
 
             get: {
                 tags: ['Cargos'],

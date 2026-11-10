@@ -17,7 +17,7 @@ const pessoaRoutes = require('./routes/pessoaRoutes');
 app.use('/pessoas', pessoaRoutes);
 
 const cargoRoutes = require('./routes/cargoRoutes');
-app.use('/cargo', cargoRoutes);
+app.use('/cargos', cargoRoutes);
 
 app.use(
     '/api-docs',
