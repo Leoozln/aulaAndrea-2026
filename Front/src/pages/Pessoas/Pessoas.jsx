@@ -1,12 +1,33 @@
-import "./Pessoas.css";
+import { useEffect, useState } from 'react';
+import API_URL from "../../services/api.js";
+import './Pessoas.css'
 
-function Pessoas(){
-        return(
-            <section className="pagina-pessoas">
-                <h2>Pessoas</h2>
-                <p>Página de pessoas em construção.</p>
-            </section>
-        );
+function Pessoas() {
+
+    const [pessoas, setPessoas] = useState([]);
+
+    useEffect(() => {
+        buscarPessoas();
+    }, []);
+
+    async function buscarPessoas() {
+        const resposta = await fetch(`${API_URL}/pessoas`);
+        const dados = await resposta.json();
+
+        setPessoas(dados);
+    }
+
+    return (
+        <div>
+            <h2>Pessoas cadastradas</h2>
+
+            {pessoas.map((pessoa) => (
+                <p key={pessoa.pes_id}>
+                    {pessoa.pes_nome}
+                </p>
+            ))}
+        </div>
+    );
 }
 
 export default Pessoas;
