@@ -5,6 +5,7 @@ import './Pessoas.css'
 function Pessoas() {
 
     const [pessoas, setPessoas] = useState([]);
+    const [nome, setNome] = useState('');
 
     useEffect(() => {
         buscarPessoas();
@@ -17,9 +18,28 @@ function Pessoas() {
         setPessoas(dados);
     }
 
+    async function cadastrarPessoa() {
+        await fetch(`${API_URL}/pessoas`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pes_nome: nome })
+        });
+
+        setNome('');
+        buscarPessoas();
+    }
+
     return (
         <div>
             <h2>Pessoas cadastradas</h2>
+
+            <input
+                type="text"
+                placeholder="Nome da pessoa"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+            />
+            <button onClick={cadastrarPessoa}>Cadastrar</button>
 
             {pessoas.map((pessoa) => (
                 <p key={pessoa.pes_id}>
